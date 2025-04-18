@@ -1,0 +1,26 @@
+{
+  "name": "Xtream-UI-Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-vscode-remote.remote-ssh",
+        "ms-python.python",
+        "ms-vscode.vscode-typescript-next"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libjemalloc2 python3-paramiko python2 mysql-server nginx php8.1-fpm php8.1-mysql php8.1-curl php8.1-cli e2fsprogs libxslt1-dev libcurl4 libgeoip-dev wget curl unzip software-properties-common && curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && sudo python2 get-pip.py && python2 -m pip install paramiko && wget https://github.com/emre1393/xtreamui_mirror/raw/master/install.py && sudo sed -i 's/Ubuntu 16, Ubuntu 18/Ubuntu 16, Ubuntu 18, Ubuntu 20, Ubuntu 22/' install.py && sudo mkdir -p /var/run/mysqld && sudo chown mysql:mysql /var/run/mysqld && sudo systemctl start mysql && sudo systemctl enable mysql",
+  "remoteUser": "root",
+  "features": {
+    "git": "latest",
+    "python": "latest"
+  },
+  "runArgs": ["--privileged"],
+  "containerEnv": {
+    "DEBIAN_FRONTEND": "noninteractive"
+  }
+}
