@@ -25,7 +25,7 @@
       ]
     }
   },
-  "postCreateCommand": "echo 'Container setup complete'",
+  "postCreateCommand": "chmod +x /workspace/.devcontainer/keepalive.sh && nohup /workspace/.devcontainer/keepalive.sh & echo 'Container ready!'",
   "remoteUser": "developer",
   "runArgs": [
     "--init",
