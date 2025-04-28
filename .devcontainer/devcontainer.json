@@ -25,7 +25,7 @@
       ]
     }
   },
-  "postCreateCommand": "chmod +x /workspace/.devcontainer/keepalive.sh && nohup /workspace/.devcontainer/keepalive.sh & echo 'Container ready!'",
+  "postCreateCommand": "echo 'KUY MAE YED'",
   "remoteUser": "developer",
   "runArgs": [
     "--init",
