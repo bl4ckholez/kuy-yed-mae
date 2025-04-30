@@ -1,18 +1,22 @@
 {
-  "name": "Node.js & Chromium",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "name": "Python & Chromium",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {},
-    "ghcr.io/devcontainers-contrib/features/chromium:1": {},
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "installTools": true
-    }
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers-contrib/features/chromium:1": {}
   },
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+      "extensions": [
+        "ms-python.python",
+        "ms-vscode.vscode-typescript-next"
+      ]
     }
   },
-  "postCreateCommand": "apt-get update && apt-get install -y libc6-dev pyton python-pip && npm install -g npm@latest && npm install playwright && npx playwright install"
+  "postCreateCommand": "pip install --user playwright && playwright install && npm install playwright"
 }
