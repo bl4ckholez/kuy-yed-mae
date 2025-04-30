@@ -1,34 +1,18 @@
 {
-  "name": "Ubuntu Development Container",
-  "image": "ubuntu:18.04", // or any other Ubuntu version you prefer
+  "name": "Node.js & Chromium",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers-contrib/features/chromium:1": {},
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
-      "username": "developer",
-      "userUid": "1000",
-      "userGid": "1000",
-      "upgradePackages": true
-    },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.10"
-    },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
+      "installTools": true
     }
   },
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-vscode.vscode-node-azure-pack",
-        "ms-azuretools.vscode-docker",
-        "ms-vscode-remote.remote-containers"
-      ]
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
     }
   },
-  "postCreateCommand": "echo 'KUY MAE YED'",
-  "remoteUser": "developer",
-  "runArgs": [
-    "--init",
-    "--restart=unless-stopped" // Helps with container persistence
-  ]
+  "postCreateCommand": "apt-get update && apt-get install -y libc6-dev && npm install -g npm@latest && npm install playwright && npx playwright install"
 }
